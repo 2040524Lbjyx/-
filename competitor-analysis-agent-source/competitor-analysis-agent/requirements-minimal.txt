@@ -1,0 +1,12 @@
+# 最小化依赖 - 只安装演示模式需要的包
+
+# Web 界面
+streamlit>=1.41.0
+
+# 数据处理
+pandas>=2.2.3
+numpy>=2.1.0
+
+# 工具库
+python-dotenv>=1.0.0
+pyyaml>=6.0.0

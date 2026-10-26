@@ -1,0 +1,65 @@
+<svg width="100%" viewBox="0 0 680 540" role="img">
+  <title>竞品分析系统多 Agent 协作模式</title>
+  <desc>用户通过 Streamlit 输入自然语言，由 Coordinator 基于 LangGraph 状态机编排 Crawler、Analyzer、Reporter 三个专职 Agent；Crawler 将结构化数据写入向量库，Analyzer 检索相似历史作为 RAG 上下文，最终 Reporter 渲染结构化报告。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <text x="340" y="28" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="500" fill="#185FA5">竞品分析系统 · 多 Agent 协作模式</text>
+
+  <rect x="240" y="58" width="200" height="52" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+  <text x="340" y="80" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="13" font-weight="500" fill="#3C3489">用户自然语言输入</text>
+  <text x="340" y="98" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="12" font-weight="400" fill="#534AB7">Streamlit Web 界面</text>
+
+  <line x1="340" y1="110" x2="340" y2="140" stroke="#185FA5" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="230" y="140" width="220" height="60" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+  <text x="340" y="162" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="13" font-weight="500" fill="#0C447C">Coordinator 协调 Agent</text>
+  <text x="340" y="182" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="12" font-weight="400" fill="#185FA5">LangGraph 状态机 · 失败重试</text>
+
+  <path d="M340,200 C250,236 160,250 105,268" fill="none" stroke="#185FA5" stroke-width="1.2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <path d="M340,200 C360,236 380,250 395,268" fill="none" stroke="#185FA5" stroke-width="1.2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <path d="M340,200 C420,236 500,250 540,268" fill="none" stroke="#185FA5" stroke-width="1.2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+
+  <rect x="40" y="270" width="130" height="76" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+  <text x="105" y="294" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="13" font-weight="500" fill="#085041">Crawler</text>
+  <text x="105" y="314" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="12" font-weight="400" fill="#0F6E56">爬虫 Agent</text>
+  <text x="105" y="332" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="12" font-weight="400" fill="#0F6E56">采集 · 结构化</text>
+
+  <rect x="185" y="270" width="130" height="76" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+  <text x="250" y="294" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="13" font-weight="500" fill="#633806">Vector Store</text>
+  <text x="250" y="314" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="12" font-weight="400" fill="#854F0B">向量库 / RAG</text>
+  <text x="250" y="332" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="12" font-weight="400" fill="#854F0B">写入 · 检索历史</text>
+
+  <rect x="330" y="270" width="130" height="76" rx="8" fill="#EAF3DE" stroke="#3B6D11" stroke-width="0.5"/>
+  <text x="395" y="294" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="13" font-weight="500" fill="#27500A">Analyzer</text>
+  <text x="395" y="314" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="12" font-weight="400" fill="#3B6D11">分析 Agent</text>
+  <text x="395" y="332" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="12" font-weight="400" fill="#3B6D11">矩阵 · 定价 · 洞察</text>
+
+  <rect x="475" y="270" width="130" height="76" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+  <text x="540" y="294" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="13" font-weight="500" fill="#712B13">Reporter</text>
+  <text x="540" y="314" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="12" font-weight="400" fill="#993C1D">报告 Agent</text>
+  <text x="540" y="332" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="12" font-weight="400" fill="#993C1D">渲染输出</text>
+
+  <line x1="170" y1="308" x2="183" y2="308" stroke="#3B6D11" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="315" y1="308" x2="328" y2="308" stroke="#3B6D11" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="460" y1="308" x2="473" y2="308" stroke="#3B6D11" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="176" y="302" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="11" font-weight="400" fill="#3B6D11">写入</text>
+  <text x="322" y="302" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="11" font-weight="400" fill="#3B6D11">检索 RAG</text>
+  <text x="467" y="302" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="11" font-weight="400" fill="#3B6D11">分析</text>
+
+  <path d="M540,346 C540,392 510,412 472,420" fill="none" stroke="#3B6D11" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="210" y="420" width="260" height="54" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+  <text x="340" y="442" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="13" font-weight="500" fill="#0C447C">结构化竞品分析报告</text>
+  <text x="340" y="461" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="12" font-weight="400" fill="#185FA5">→ 分析结果 / 历史记录 Tab</text>
+
+  <line x1="60" y1="500" x2="92" y2="500" stroke="#3B6D11" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="98" y="504" font-family="sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">数据流</text>
+  <line x1="170" y1="500" x2="202" y2="500" stroke="#185FA5" stroke-width="1.2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <text x="208" y="504" font-family="sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">编排调度</text>
+
+  <text x="340" y="525" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">LLM：OpenAI / DeepSeek 兼容 · 抽取低温 0.1 · 生成 0.7</text>
+</svg>

@@ -1,0 +1,201 @@
+# {{ title }}
+
+**生成时间**: {{ generated_at }}
+
+---
+
+## 执行摘要
+
+{{ executive_summary }}
+
+### 数据可信度
+
+{% if feature_metadata is defined and feature_metadata.warning %}
+> ⚠️ {{ feature_metadata.warning }}
+{% endif %}
+{% if pricing_metadata is defined and pricing_metadata.warning %}
+> ⚠️ {{ pricing_metadata.warning }}
+{% endif %}
+
+{{ quality_table | default("无数据质量检测结果") }}
+
+---
+
+## 1. 功能对比分析
+
+### 1.1 功能对比矩阵
+
+{{ feature_matrix }}
+
+### 1.2 功能覆盖度可视化
+
+{% if charts %}
+{% for chart in charts %}
+![功能对比图表]({{ chart }})
+{% endfor %}
+{% endif %}
+
+---
+
+## 2. 定价分析
+
+### 2.1 定价模式对比
+
+{{ pricing_table }}
+
+### 2.2 详细定价信息
+
+{% if pricing_analysis %}
+{{ pricing_analysis.analysis }}
+{% endif %}
+
+---
+
+## 3. 版本更新分析（Changelog）
+
+{% if changelog_analysis %}
+{% for comp, data in changelog_analysis.items() %}
+### {{ comp }}
+
+{% for record in data.version_records | default([]) %}
+- {{ record.platform }}：{{ record.version }}｜发布日期：{{ record.date or '未知' }}｜来源：{{ record.url or '未提供' }}
+{% endfor %}
+最近获取的版本记录，不保证覆盖所有平台或最新发布。
+
+{% if data.latest_version %}**最近获取版本**: {{ data.latest_version }}{% if data.latest_release_date %}（{{ data.latest_release_date }}）{% endif %}
+
+{% endif %}
+{% if data.update_frequency %}**更新频率**: {{ data.update_frequency }}
+
+{% endif %}
+{% if data.recent_updates %}**近期重要更新**:
+{% for item in data.recent_updates[:5] %}
+- {{ item }}
+{% endfor %}
+
+{% endif %}
+{% endfor %}
+{% else %}
+无 Changelog 数据
+{% endif %}
+
+---
+
+## 3.5 用户反馈分析（App Store 评分 / 评论）
+
+{% if app_feedback_analysis %}
+{% for comp, d in app_feedback_analysis.items() %}
+### {{ comp }}
+
+{% if d.available %}
+- **评分**: {{ d.rating }}{% if d.rating_count %}（{{ d.rating_count }} 人评分）{% endif %}
+
+- **情感倾向**: {{ d.sentiment }}
+
+- **满意度总结**: {{ d.satisfaction_summary }}
+
+{% if d.pain_points %}**用户痛点**:
+
+{% for p in d.pain_points %}- {{ p }}
+
+{% endfor %}
+{% endif %}
+{% if d.highlights %}**用户好评点**:
+
+{% for h in d.highlights %}- {{ h }}
+
+{% endfor %}
+{% endif %}
+{% else %}
+{{ d.reason }}
+
+{% endif %}
+
+{% endfor %}
+{% else %}
+无用户反馈数据
+{% endif %}
+
+---
+
+## 3.6 官网文案变化（营销方向）
+
+{% if copy_changes_analysis %}
+{% for comp, d in copy_changes_analysis.items() %}
+### {{ comp }}
+
+{% if d.available %}
+{% if d.direction_changes %}**方向调整**:
+
+{% for c in d.direction_changes %}- {{ c }}
+
+{% endfor %}
+{% endif %}
+{% if d.emphasis_shift %}**重心变化**: {{ d.emphasis_shift }}
+
+{% endif %}
+{% if d.ab_test_hint %}**A/B 测试痕迹**: {{ d.ab_test_hint }}
+
+{% endif %}
+{% else %}
+{{ d.reason }}
+
+{% endif %}
+
+{% endfor %}
+{% else %}
+无官网文案变化数据
+{% endif %}
+
+---
+
+## 4. AI 洞察与建议
+
+{% if insights %}
+{% for insight in insights %}
+### 洞察 {{ loop.index }}
+
+{{ insight }}
+
+{% endfor %}
+{% endif %}
+
+---
+
+## 5. 结论
+
+基于以上分析，我们得出以下结论：
+
+1. **差异化定位**: 各竞品在功能覆盖和定价策略上各有侧重
+2. **竞争优势**: 需要根据目标用户群体选择合适的竞争策略
+3. **建议**: 如果是创业者，建议在垂直领域寻找差异化机会
+
+---
+
+## 附录
+
+### 数据来源
+
+{% for competitor in evidence_sources | default([]) %}
+**{{ competitor.name }}**
+{% if competitor.sources %}
+{% for source in competitor.sources %}
+- [{{ source.label }}]({{ source.url }}){% if source.fields %}：{{ source.fields }}{% endif %}（采集时间：{{ source.captured_at }}；数据状态：{{ source.cache_status }}）
+{% endfor %}
+{% else %}
+- 无可追溯 URL；相关内容均应视为推测
+{% endif %}
+{% endfor %}
+
+> “AI 辅助分析”不是事实来源；凡无 URL 证据的内容均已按低置信度或推测标注。
+
+### 分析方法
+
+- 功能对比矩阵
+- 定价策略分析
+- 版本更新频率分析
+- LLM 生成的商业洞察
+
+---
+
+*本报告由竞品分析多Agent系统自动生成*
